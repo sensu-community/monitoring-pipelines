@@ -67,7 +67,7 @@ metadata:
 spec:
   command: sensu-wavefront-handler --host $WAVEFRONT_HOST --metrics-port $WAVEFRONT_METRICS_PORT
   runtime_assets:
-  - sensu-wavefront-handler
+  - sensu/sensu-wavefront-handler
   type: pipe
   filters:
   - has_metrics
