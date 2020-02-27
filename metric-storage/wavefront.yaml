@@ -58,6 +58,22 @@ spec:
   filters: null
   headers: null
 ---
+ type: Secret
+ api_version: secrets/v1
+ metadata:
+   name: wavefront_host
+ spec:
+   provider: env
+   id: WAVEFRONT_HOST
+---
+ type: Secret
+ api_version: secrets/v1
+ metadata:
+   name: wavefront_metrics_port
+ spec:
+   provider: env
+   id: WAVEFRONT_METRICS_PORT
+---
 type: Handler
 api_version: core/v2
 metadata:
