@@ -13,7 +13,7 @@ provider][1]).
 
 The purpose of this project is to provide portable configuration for a more
 "turn-key" experience with Sensu Go. Users should be able to add individual
-pipelines or the entire collection of pipelines using `sensuctl`. 
+pipelines or the entire collection of pipelines using `sensuctl`.
 
 ### Examples
 
@@ -38,10 +38,12 @@ $ sensuctl create -r -f monitoring-pipelines/
 2. All resource definitions must be written in YAML for consistency
    and comment support.
 
-3. All Assets used must be registered and hosted on
+3. Resource definitions should NOT include a namespace. 
+
+4. All Assets used must be registered and hosted on
    [Bonsai](https://bonsai.sensu.io).
 
-4. Asset resources must include a version reference in their name.
+5. Asset resources must include a version reference in their name.
 
 ## Contributing
 
