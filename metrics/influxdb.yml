@@ -19,24 +19,56 @@ spec:
     - entity.system.os == 'linux'
     - entity.system.arch == 'amd64'
 ---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: influxdb_url
+spec:
+  provider: env
+  id: INFLUXDB_URL
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: influxdb_db
+spec:
+  provider: env
+  id: INFLUXDB_DB
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: influxdb_user
+spec:
+  provider: env
+  id: INFLUXDB_USER
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: influxdb_password
+spec:
+  provider: env
+  id: INFLUXDB_PASSWORD
+---
 type: Handler
 api_version: core/v2
 metadata:
   name: influxdb
   spec:
     type: pipe
-    runtime_assets:
-      - sensu-influxdb-handler
-    secrets:
-      - name: INFLUXDB_URL
-        secret: influxdb_url
-      - name: INFLUXDB_DB
-        secret: influxdb_db
-      - name: INFLUXDB_USER
-        secret: influxdb_user
-      - name: INFLUXDB_PASSWORD
-        secret: influxdb_password
     command: sensu-influxdb-handler -a $INFLUXDB_URL -d $INFLUXDB_DB -u $INFLUXDB_USER -p $INFLUXDB_PASSWORD
     timeout: 10
     filters:
-      - has_metrics
+    - has_metrics
+    runtime_assets:
+    - sensu-influxdb-handler
+    secrets:
+    - name: INFLUXDB_URL
+      secret: influxdb_url
+    - name: INFLUXDB_DB
+      secret: influxdb_db
+    - name: INFLUXDB_USER
+      secret: influxdb_user
+    - name: INFLUXDB_PASSWORD
+      secret: influxdb_password
