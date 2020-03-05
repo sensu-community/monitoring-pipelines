@@ -77,7 +77,7 @@ spec:
 type: Handler
 api_version: core/v2
 metadata:
-  name: pushover
+  name: flowdock
 spec:
   command: sensu-go-flowdock-handler
   env_vars: null
