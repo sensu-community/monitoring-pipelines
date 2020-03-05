@@ -92,6 +92,6 @@ spec:
   - name: SENSU_FLOWDOCK_TOKEN
     secret: flowdock_token
   - name: SENSU_FLOWDOCK_BACKENDURL
-    secret: 
+    secret: flowdock_backendurl
   timeout: 0
   type: pipe
