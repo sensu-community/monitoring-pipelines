@@ -11,7 +11,7 @@ spec:
   - not_silenced
   handlers: null
   runtime_assets:
-  - nixwiz/sensu-go-flowdock-handler
+  - nixwiz/sensu-go-flowdock-handler:0.5.1
   secrets:
   - name: SENSU_FLOWDOCK_TOKEN
     secret: flowdock_token
