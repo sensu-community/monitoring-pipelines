@@ -1,0 +1,18 @@
+---
+type: Handler
+api_version: core/v2
+metadata:
+  name: graphite_tcp
+  namespace: default
+spec:
+  env_vars: []
+  filters: []
+  handlers: []
+  mutator: only_check_output
+  runtime_assets: []
+  secrets: 
+  socket:
+    host: REPLACEME_GRAPHITE_HOST
+    port: REPLACEME_GRAPHITE_PORT
+  timeout: 0
+  type: tcp
