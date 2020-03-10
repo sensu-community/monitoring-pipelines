@@ -1,4 +1,42 @@
 ---
+type: Handler
+api_version: core/v2
+metadata:
+  name: pushover
+spec:
+  command: sensu-go-pushover-handler
+  env_vars: null
+  filters:
+  - is_incident
+  - not_silenced
+  - fatigue_check
+  handlers: null
+  runtime_assets:
+  - nixwiz/sensu-go-pushover-handler
+  secrets:
+  - name: SENSU_PUSHOVER_TOKEN
+    secret: pushover_token
+  - name: SENSU_PUSHOVER_USERKEY
+    secret: pushover_userkey
+  timeout: 0
+  type: pipe
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: pushover_token
+spec:
+  provider: env
+  id: SENSU_PUSHOVER_TOKEN
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: pushover_userkey
+spec:
+  provider: env
+  id: SENSU_PUSHOVER_USERKEY
+---
 type: Asset
 api_version: core/v2
 metadata:
@@ -10,7 +48,7 @@ metadata:
     io.sensu.bonsai.tier: Community
     io.sensu.bonsai.url: https://bonsai.sensu.io/assets/nixwiz/sensu-go-pushover-handler
     io.sensu.bonsai.version: 0.6.0
-  name: nixwiz/sensu-go-pushover-handler
+  name: nixwiz/sensu-go-pushover-handler:0.6.0
 spec:
   builds:
   - filters:
@@ -57,41 +95,3 @@ spec:
     url: https://assets.bonsai.sensu.io/bc3eee9b309ba1be45f8f8e18db74e756fb46b58/sensu-go-pushover-handler_0.6.0_linux_amd64.tar.gz
   filters: null
   headers: null
----
-type: Secret
-api_version: secrets/v1
-metadata:
-  name: pushover_token
-spec:
-  provider: env
-  id: SENSU_PUSHOVER_TOKEN
----
-type: Secret
-api_version: secrets/v1
-metadata:
-  name: pushover_userkey
-spec:
-  provider: env
-  id: SENSU_PUSHOVER_USERKEY
----
-type: Handler
-api_version: core/v2
-metadata:
-  name: pushover
-spec:
-  command: sensu-go-pushover-handler
-  env_vars: null
-  filters:
-  - is_incident
-  - not_silenced
-  - fatigue_check
-  handlers: null
-  runtime_assets:
-  - nixwiz/sensu-go-pushover-handler
-  secrets:
-  - name: SENSU_PUSHOVER_TOKEN
-    secret: pushover_token
-  - name: SENSU_PUSHOVER_USERKEY
-    secret: pushover_userkey
-  timeout: 0
-  type: pipe
