@@ -1,4 +1,41 @@
 ---
+type: Handler
+api_version: core/v2
+metadata:
+  name: wavefront
+spec:
+  command: >-
+    sensu-wavefront-handler
+    --host $WAVEFRONT_HOST
+    --metrics-port $WAVEFRONT_METRICS_PORT
+  runtime_assets:
+  - sensu/sensu-wavefront-handler
+  type: pipe
+  filters:
+  - has_metrics
+  timeout: 10
+  secrets:
+  - name: WAVEFRONT_HOST
+    secret: wavefront_host
+  - name: WAVEFRONT_METRICS_PORT
+    secret: wavefront_metrics_port
+---
+ type: Secret
+ api_version: secrets/v1
+ metadata:
+   name: wavefront_host
+ spec:
+   provider: env
+   id: WAVEFRONT_HOST
+---
+ type: Secret
+ api_version: secrets/v1
+ metadata:
+   name: wavefront_metrics_port
+ spec:
+   provider: env
+   id: WAVEFRONT_METRICS_PORT
+---
 type: Asset
 api_version: core/v2
 metadata:
@@ -11,7 +48,6 @@ metadata:
     io.sensu.bonsai.url: https://bonsai.sensu.io/assets/sensu/sensu-wavefront-handler
     io.sensu.bonsai.version: 0.1.0
   name: sensu/sensu-wavefront-handler
-  namespace: default
 spec:
   builds:
   - filters:
@@ -58,22 +94,3 @@ spec:
     url: https://assets.bonsai.sensu.io/c3a1155e887881afd14cf49bbebbc834e39d7d1e/sensu-wavefront-handler_0.1.0_linux_amd64.tar.gz
   filters: null
   headers: null
----
-type: Handler
-api_version: core/v2
-metadata:
-  name: sensu-wavefront-handler
-  namespace: default
-spec:
-  command: sensu-wavefront-handler --host $WAVEFRONT_HOST --metrics-port $WAVEFRONT_METRICS_PORT
-  runtime_assets:
-  - sensu/sensu-wavefront-handler
-  type: pipe
-  filters:
-  - has_metrics
-  timeout: 10
-  secrets:
-  - name: WAVEFRONT_HOST
-    secret: wavefront_host
-  - name: WAVEFRONT_METRICS_PORT
-    secret: wavefront_metrics_port
