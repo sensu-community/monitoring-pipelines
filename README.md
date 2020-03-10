@@ -27,7 +27,7 @@ Add the entire collection of pipelines:
 
 ```
 $ git clone git@github.com:sensu-community/monitoring-pipelines.git
-$ sensuctl create -r -f monitoring-pipelines/
+$ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
 ```
 
 ## Rules
@@ -38,7 +38,7 @@ $ sensuctl create -r -f monitoring-pipelines/
 2. All resource definitions must be written in YAML for consistency
    and comment support.
 
-3. Resource definitions should NOT include a namespace. 
+3. Resource definitions should NOT include a namespace.
 
 4. All Assets used must be registered and hosted on
    [Bonsai](https://bonsai.sensu.io).
