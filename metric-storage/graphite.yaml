@@ -4,13 +4,13 @@ api_version: core/v2
 metadata:
   name: graphite
 spec:
-  command: sensu-go-graphite-handler
+  command: sensu-go-graphite-handler --host $GRAPHITE_HOST --port $GRAPHITE_PORT
   env_vars: null
   filters:
   - has_metrics
   handlers: null
   runtime_assets:
-  - nixwiz/sensu-go-graphite-handler --host $GRAPHITE_HOST --port $GRAPHITE_PORT
+  - nixwiz/sensu-go-graphite-handler
   secrets:
   - name: GRAPHITE_HOST
     secret: graphite_host
