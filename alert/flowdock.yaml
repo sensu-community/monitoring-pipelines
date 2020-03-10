@@ -1,4 +1,42 @@
 ---
+type: Handler
+api_version: core/v2
+metadata:
+  name: flowdock
+spec:
+  command: sensu-go-flowdock-handler
+  env_vars: null
+  filters:
+  - is_incident
+  - not_silenced
+  - fatigue_check
+  handlers: null
+  runtime_assets:
+  - nixwiz/sensu-go-flowdock-handler
+  secrets:
+  - name: SENSU_FLOWDOCK_TOKEN
+    secret: flowdock_token
+  - name: SENSU_FLOWDOCK_BACKENDURL
+    secret: flowdock_backendurl
+  timeout: 0
+  type: pipe
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: flowdock_token
+spec:
+  provider: env
+  id: SENSU_FLOWDOCK_TOKEN
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: flowdock_backendurl
+spec:
+  provider: env
+  id: SENSU_FLOWDOCK_BACKENDURL
+---
 type: Asset
 api_version: core/v2
 metadata:
@@ -10,7 +48,7 @@ metadata:
     io.sensu.bonsai.tier: Community
     io.sensu.bonsai.url: https://bonsai.sensu.io/assets/nixwiz/sensu-go-flowdock-handler
     io.sensu.bonsai.version: 0.5.1
-  name: nixwiz/sensu-go-flowdock-handler
+  name: nixwiz/sensu-go-flowdock-handler:0.5.1
 spec:
   builds:
   - filters:
@@ -57,41 +95,3 @@ spec:
     url: https://assets.bonsai.sensu.io/4da695a95ac274426112403cf816406c7b3a5348/sensu-go-flowdock-handler_0.5.1_linux_amd64.tar.gz
   filters: null
   headers: null
----
-type: Secret
-api_version: secrets/v1
-metadata:
-  name: flowdock_token
-spec:
-  provider: env
-  id: SENSU_FLOWDOCK_TOKEN
----
-type: Secret
-api_version: secrets/v1
-metadata:
-  name: flowdock_backendurl
-spec:
-  provider: env
-  id: SENSU_FLOWDOCK_BACKENDURL
----
-type: Handler
-api_version: core/v2
-metadata:
-  name: flowdock
-spec:
-  command: sensu-go-flowdock-handler
-  env_vars: null
-  filters:
-  - is_incident
-  - not_silenced
-  - fatigue_check
-  handlers: null
-  runtime_assets:
-  - nixwiz/sensu-go-flowdock-handler
-  secrets:
-  - name: SENSU_FLOWDOCK_TOKEN
-    secret: flowdock_token
-  - name: SENSU_FLOWDOCK_BACKENDURL
-    secret: flowdock_backendurl
-  timeout: 0
-  type: pipe
