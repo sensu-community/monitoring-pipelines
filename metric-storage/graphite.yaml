@@ -10,7 +10,7 @@ spec:
   - has_metrics
   handlers: null
   runtime_assets:
-  - nixwiz/sensu-go-graphite-handler
+  - nixwiz/sensu-go-graphite-handler:0.4.0
   secrets:
   - name: GRAPHITE_HOST
     secret: graphite_host
