@@ -1,4 +1,40 @@
 ---
+type: Handler
+api_version: core/v2
+metadata:
+  name: graphite
+spec:
+  command: sensu-go-graphite-handler
+  env_vars: null
+  filters:
+  - has_metrics
+  handlers: null
+  runtime_assets:
+  - nixwiz/sensu-go-graphite-handler --host $GRAPHITE_HOST --port $GRAPHITE_PORT
+  secrets:
+  - name: GRAPHITE_HOST
+    secret: graphite_host
+  - name: GRAPHITE_PORT
+    secret: graphite_port
+  timeout: 10
+  type: pipe
+---
+ type: Secret
+ api_version: secrets/v1
+ metadata:
+   name: graphite_host
+ spec:
+   provider: env
+   id: GRAPHITE_HOST
+---
+ type: Secret
+ api_version: secrets/v1
+ metadata:
+   name: graphite_port
+ spec:
+   provider: env
+   id: GRAPHITE_PORT
+---
 type: Asset
 api_version: core/v2
 metadata:
@@ -10,7 +46,7 @@ metadata:
     io.sensu.bonsai.tier: Community
     io.sensu.bonsai.url: https://bonsai.sensu.io/assets/nixwiz/sensu-go-graphite-handler
     io.sensu.bonsai.version: 0.4.0
-  name: nixwiz/sensu-go-graphite-handler
+  name: nixwiz/sensu-go-graphite-handler:0.4.0
 spec:
   builds:
   - filters:
@@ -57,39 +93,3 @@ spec:
     url: https://assets.bonsai.sensu.io/f198b915d57c582c037429570a24777c75f5e83e/sensu-go-graphite-handler_0.4.0_linux_amd64.tar.gz
   filters: null
   headers: null
----
- type: Secret
- api_version: secrets/v1
- metadata:
-   name: graphite_host
- spec:
-   provider: env
-   id: GRAPHITE_HOST
----
- type: Secret
- api_version: secrets/v1
- metadata:
-   name: graphite_port
- spec:
-   provider: env
-   id: GRAPHITE_PORT
----
-type: Handler
-api_version: core/v2
-metadata:
-  name: graphite
-spec:
-  command: sensu-go-graphite-handler
-  env_vars: null
-  filters:
-  - has_metrics
-  handlers: null
-  runtime_assets:
-  - nixwiz/sensu-go-graphite-handler --host $GRAPHITE_HOST --port $GRAPHITE_PORT
-  secrets:
-  - name: GRAPHITE_HOST
-    secret: graphite_host
-  - name: GRAPHITE_PORT
-    secret: graphite_port
-  timeout: 10
-  type: pipe
