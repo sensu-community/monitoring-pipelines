@@ -9,7 +9,6 @@ spec:
   filters:
   - is_incident
   - not_silenced
-  - fatigue_check
   handlers: null
   runtime_assets:
   - nixwiz/sensu-go-pushover-handler
