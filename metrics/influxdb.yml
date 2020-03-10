@@ -1,3 +1,58 @@
+---
+type: Handler
+api_version: core/v2
+metadata:
+  name: influxdb
+  spec:
+    type: pipe
+    command: sensu-influxdb-handler -a $INFLUXDB_URL -d $INFLUXDB_DB -u $INFLUXDB_USER -p $INFLUXDB_PASSWORD
+    timeout: 10
+    filters:
+    - has_metrics
+    runtime_assets:
+    - sensu-influxdb-handler
+    secrets:
+    - name: INFLUXDB_URL
+      secret: influxdb_url
+    - name: INFLUXDB_DB
+      secret: influxdb_db
+    - name: INFLUXDB_USER
+      secret: influxdb_user
+    - name: INFLUXDB_PASSWORD
+      secret: influxdb_password
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: influxdb_url
+spec:
+  provider: env
+  id: INFLUXDB_URL
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: influxdb_db
+spec:
+  provider: env
+  id: INFLUXDB_DB
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: influxdb_user
+spec:
+  provider: env
+  id: INFLUXDB_USER
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: influxdb_password
+spec:
+  provider: env
+  id: INFLUXDB_PASSWORD
+---
 type: Asset
 api_version: core/v2
 metadata:
@@ -56,57 +111,3 @@ spec:
     url: https://assets.bonsai.sensu.io/b28f8719a48aa8ea80c603f97e402975a98cea47/sensu-influxdb-handler_3.1.2_linux_amd64.tar.gz
   filters: null
   headers: null
----
-type: Secret
-api_version: secrets/v1
-metadata:
-  name: influxdb_url
-spec:
-  provider: env
-  id: INFLUXDB_URL
----
-type: Secret
-api_version: secrets/v1
-metadata:
-  name: influxdb_db
-spec:
-  provider: env
-  id: INFLUXDB_DB
----
-type: Secret
-api_version: secrets/v1
-metadata:
-  name: influxdb_user
-spec:
-  provider: env
-  id: INFLUXDB_USER
----
-type: Secret
-api_version: secrets/v1
-metadata:
-  name: influxdb_password
-spec:
-  provider: env
-  id: INFLUXDB_PASSWORD
----
-type: Handler
-api_version: core/v2
-metadata:
-  name: influxdb
-  spec:
-    type: pipe
-    command: sensu-influxdb-handler -a $INFLUXDB_URL -d $INFLUXDB_DB -u $INFLUXDB_USER -p $INFLUXDB_PASSWORD
-    timeout: 10
-    filters:
-    - has_metrics
-    runtime_assets:
-    - sensu-influxdb-handler
-    secrets:
-    - name: INFLUXDB_URL
-      secret: influxdb_url
-    - name: INFLUXDB_DB
-      secret: influxdb_db
-    - name: INFLUXDB_USER
-      secret: influxdb_user
-    - name: INFLUXDB_PASSWORD
-      secret: influxdb_password
