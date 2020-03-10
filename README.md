@@ -38,12 +38,19 @@ $ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
 2. All resource definitions must be written in YAML for consistency
    and comment support.
 
-3. Resource definitions should NOT include a namespace.
+3. Handler, Filter, and Mutator resource names must be unique within the scope
+   of this project.
 
-4. All Assets used must be registered and hosted on
+   _NOTE: at this time we do not wish to enforce strict naming conventions. We
+   will resolve naming conflicts on a case-by-case basis, which means resource
+   names will be subject to change._
+
+4. Resource definitions should NOT include a namespace.
+
+5. All Assets used must be registered and hosted on
    [Bonsai](https://bonsai.sensu.io).
 
-5. Asset resources must include a version reference in their name.
+6. Asset resources must include a version reference in their name.
 
 ## Contributing
 
