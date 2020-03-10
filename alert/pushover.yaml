@@ -11,7 +11,7 @@ spec:
   - not_silenced
   handlers: null
   runtime_assets:
-  - nixwiz/sensu-go-pushover-handler
+  - nixwiz/sensu-go-pushover-handler:0.6.0
   secrets:
   - name: SENSU_PUSHOVER_TOKEN
     secret: pushover_token
