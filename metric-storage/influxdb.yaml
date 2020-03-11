@@ -1,3 +1,48 @@
+# Description
+#   The Sensu InfluxDB Handler is a Sensu Event Handler that sends metrics to
+#   the time series database InfluxDB.
+#
+# Instructions
+#   1. Add "influxdb" to the "metric-storage" handler set.
+#
+#      To create the "metric-storage" handler set, please run:
+#
+#      $ sensuctl handler create metric-storage --type set --handlers influxdb
+#
+#      If you already have a handler set called "metric-storage", please run:
+#
+#      $ sensuctl edit handler metric-storage
+#
+#      NOTE: the sensuctl edit command will open your default editor; please
+#      modify the "handlers" attribute by adding "influxdb".
+#
+#   2. Configure the following secrets using your preferred Sensu Go Secrets
+#      provider:
+#
+#      - influxdb_url (e.g. "http://127.0.0.1:8086")
+#      - influxdb_db (e.g. "sensu")
+#      - influxdb_user (e.g. "sensu")
+#      - influxdb_password (e.g. "replaceme")
+#
+#      NOTE: example secret resources using the "env" provider are included in
+#      this template; to add your secrets to the Sensu Backend, please modify
+#      /etc/default/sensu-backend or /etc/sysconfig/sensu-backend and restart
+#      the sensu-backend service.
+#
+#   3. More configuration options are available for this plugin; please see the
+#      plugin documentation for more details.
+#
+# Documentation
+#   - https://github.com/sensu/sensu-influxdb-handler#sensu-influxdb-handler
+#   - https://docs.sensu.io/sensu-go/latest/reference/secrets/
+#
+# Contributors
+#   The following individuals have contributed to this configuration template:
+#   - @portertech
+#   - @nikkiki
+#   - @calebhailey
+#   - @jspaleta
+#   - @nixwiz
 ---
 type: Handler
 api_version: core/v2
@@ -5,12 +50,12 @@ metadata:
   name: influxdb
   spec:
     type: pipe
-    command: sensu-influxdb-handler -a $INFLUXDB_URL -d $INFLUXDB_DB -u $INFLUXDB_USER -p $INFLUXDB_PASSWORD
+    command: sensu-influxdb-handler
     timeout: 10
     filters:
     - has_metrics
     runtime_assets:
-    - sensu-influxdb-handler
+    - sensu/sensu-influxdb-handler:3.1.2
     secrets:
     - name: INFLUXDB_URL
       secret: influxdb_url
@@ -64,7 +109,7 @@ metadata:
     io.sensu.bonsai.tier: Supported
     io.sensu.bonsai.url: https://bonsai.sensu.io/assets/sensu/sensu-influxdb-handler
     io.sensu.bonsai.version: 3.1.2
-  name: sensu/sensu-influxdb-handler
+  name: sensu/sensu-influxdb-handler:3.1.2
 spec:
   builds:
   - filters:
