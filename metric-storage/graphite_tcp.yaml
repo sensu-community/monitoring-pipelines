@@ -10,9 +10,9 @@ spec:
   handlers: []
   mutator: only_check_output
   runtime_assets: []
-  secrets: 
+  secrets:
   socket:
-    host: REPLACEME_GRAPHITE_HOST
-    port: REPLACEME_GRAPHITE_PORT
+    host: localhost
+    port: 2003
   timeout: 0
   type: tcp

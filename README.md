@@ -50,7 +50,8 @@ $ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
 5. All Assets used must be registered and hosted on
    [Bonsai](https://bonsai.sensu.io).
 
-6. Asset resources must include a version reference in their name.
+6. Asset resources must include a version reference in their name
+   (e.g. sensu/sensu-email-handler:0.4.1).
 
 ## Contributing
 
