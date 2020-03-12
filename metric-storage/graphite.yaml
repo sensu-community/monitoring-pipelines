@@ -4,7 +4,10 @@ api_version: core/v2
 metadata:
   name: graphite
 spec:
-  command: sensu-go-graphite-handler --host $GRAPHITE_HOST --port $GRAPHITE_PORT
+  command: >-
+    sensu-go-graphite-handler
+    --host $GRAPHITE_HOST
+    --port $GRAPHITE_PORT
   env_vars: null
   filters:
   - has_metrics
