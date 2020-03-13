@@ -67,7 +67,7 @@ $ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
 
 10. For alert and incident-management handlers avoid the use of filters that
     have highly subjective configuration options. By default, use the
-    `is_incident` and `not_sileced` filters.
+    `is_incident` and `not_silenced` filters.
 
 11. When defining resources, use the following order:
     * Top level resource being defined, [Handler|Mutator|Filter]
