@@ -67,7 +67,8 @@ $ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
 
 10. For alert and incident-management handlers avoid the use of filters that
     have highly subjective configuration options. By default, use the
-    `is_incident` and `not_silenced` filters.
+    `is_incident` and `not_silenced` filters.  However, we do encourage you
+    to share your filters, as appropriate in the `shared` directory.
 
 11. When defining resources, use the following order:
     * Top level resource being defined, [Handler|Mutator|Filter]
@@ -75,58 +76,58 @@ $ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
     * Assets
 
 12. Handler resources are defined under the [Handler Set][1] directories:
-    * alert (general alert mechanisms such as email, slack, etc.)
-    * deregistration (handlers that deregister from cloud providers,
+    * `alert` (general alert mechanisms such as email, slack, etc.)
+    * `deregistration` (handlers that deregister from cloud providers,
       configuration management, etc.)
-    * incident-management (PagerDuty, etc.)
-    * metric-storage (metrics handlers such as InfluxDB, etc.)
-    * remediation (handlers that do auto-remediation)
+    * `incident-management` (PagerDuty, etc.)
+    * `metric-storage` (metrics handlers such as InfluxDB, etc.)
+    * `remediation` (handlers that do auto-remediation)
 
     **NOTE:** These are organized to line up with the handlers to be defined
     in the [monitoring-checks][2] repository.
 
-13. Mutator and Filter resources are defined in the shared directory structure.
+13. Mutator and Filter resources are defined in the `shared` directory structure.
 
 14. Resources defined require the following fields, even if they are blank or
     are the defaults:
     * Handler Sets
-      * type
-      * api_version
-      * name
-      * handlers
+      * `type`
+      * `api_version`
+      * `name`
+      * `handlers`
     * Pipe Handlers
-      * type
-      * api_version
-      * name
-      * command
-      * filters
-      * runtime_assets
-      * timeout
-      * env_vars
-      * secrets
+      * `type`
+      * `api_version`
+      * `name`
+      * `command`
+      * `filters`
+      * `runtime_assets`
+      * `timeout`
+      * `env_vars`
+      * `secrets`
     * Socket Handlers
-      * type
-      * api_version
-      * name
-      * socket
-      * filters
-      * timeout
+      * `type`
+      * `api_version`
+      * `name`
+      * `socket`
+      * `filters`
+      * `timeout`
     * Filters
-      * type
-      * api_version
-      * name
-      * action
-      * expressions
-      * runtime_assets
+      * `type`
+      * `api_version`
+      * `name`
+      * `action`
+      * `expressions`
+      * `runtime_assets`
     * Mutators
-      * type
-      * api_version
-      * name
-      * command
-      * timeout
-      * env_vars
-      * secrets
-      * runtime_assets
+      * `type`
+      * `api_version`
+      * `name`
+      * `command`
+      * `timeout`
+      * `env_vars`
+      * `secrets`
+      * `runtime_assets`
 
 ## Contributing
 
