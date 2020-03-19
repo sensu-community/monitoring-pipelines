@@ -48,23 +48,23 @@ type: Handler
 api_version: core/v2
 metadata:
   name: influxdb
-  spec:
-    type: pipe
-    command: sensu-influxdb-handler
-    timeout: 10
-    filters:
-    - has_metrics
-    runtime_assets:
-    - sensu/sensu-influxdb-handler:3.1.2
-    secrets:
-    - name: INFLUXDB_URL
-      secret: influxdb_url
-    - name: INFLUXDB_DB
-      secret: influxdb_db
-    - name: INFLUXDB_USER
-      secret: influxdb_user
-    - name: INFLUXDB_PASSWORD
-      secret: influxdb_password
+spec:
+  type: pipe
+  command: sensu-influxdb-handler
+  timeout: 10
+  filters:
+  - has_metrics
+  runtime_assets:
+  - sensu/sensu-influxdb-handler:3.1.2
+  secrets:
+  - name: INFLUXDB_URL
+    secret: influxdb_url
+  - name: INFLUXDB_DB
+    secret: influxdb_db
+  - name: INFLUXDB_USER
+    secret: influxdb_user
+  - name: INFLUXDB_PASSWORD
+    secret: influxdb_password
 ---
 type: Secret
 api_version: secrets/v1
