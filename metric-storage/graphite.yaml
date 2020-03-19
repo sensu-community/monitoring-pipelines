@@ -1,3 +1,4 @@
+---
 # Description
 #   The Sensu Graphite Handler is a Sensu Event Handler that sends metrics to
 #   the time series database Graphite.
@@ -39,7 +40,6 @@
 #   - @calebhailey
 #   - @jspaleta
 #   - @nixwiz
----
 type: Handler
 api_version: core/v2
 metadata:
