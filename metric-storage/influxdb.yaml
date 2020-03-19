@@ -50,15 +50,15 @@ metadata:
   name: influxdb
 spec:
   type: pipe
-  command: sensu-influxdb-handler
+  command: sensu-influxdb-handler -d $INFLUXDB_DB
   timeout: 10
   filters:
   - has_metrics
   runtime_assets:
   - sensu/sensu-influxdb-handler:3.1.2
   secrets:
-  - name: INFLUXDB_URL
-    secret: influxdb_url
+  - name: INFLUXDB_ADDR
+    secret: influxdb_addr
   - name: INFLUXDB_DB
     secret: influxdb_db
   - name: INFLUXDB_USER
@@ -69,10 +69,10 @@ spec:
 type: Secret
 api_version: secrets/v1
 metadata:
-  name: influxdb_url
+  name: influxdb_addr
 spec:
   provider: env
-  id: INFLUXDB_URL
+  id: INFLUXDB_ADDR
 ---
 type: Secret
 api_version: secrets/v1
