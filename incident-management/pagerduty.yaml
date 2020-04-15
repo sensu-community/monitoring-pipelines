@@ -83,7 +83,7 @@ spec:
       sha512: 10eb353c624fa1853a5b6175366e6ae325315208b2289b1191629004737dbacbfc576f54b95a89560a5226e24aa0438458256b04ac1ffdc9876cf0afdf6441dd
       filters:
         - entity.system.os == 'windows'
-        - entity.system.arch == 'amd64'
+        - entity.system.arch == '386'
     - url: https://assets.bonsai.sensu.io/e6722787284bd20f68d0375ee927aa0ec5d2e57b/sensu-pagerduty-handler_1.3.2_windows_amd64.tar.gz
       sha512: 83b51af2254470edbeabf840ae556f113452133f4abbe41e0ce5e0ac37d00262a17646d38ddc23fa16f39706f3506ade902eb1b29429bb0898cfd8c5ce0b0e36
       filters:
