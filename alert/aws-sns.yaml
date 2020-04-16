@@ -17,8 +17,8 @@
 #      NOTE: the sensuctl edit command will open your default editor; please
 #      modify the "handlers" attribute by adding "aws-sns".
 #
-#   2. If using the AWS environment variables for credentails (and not AWS
-#      them from the ~/.aws/credentials file or EC2 IAM role), configure the
+#   2. If using the AWS environment variables for credentails (and not using
+#      them from the ~/.aws/credentials file or an EC2 IAM role), configure the
 #      following secrets using your preferred Sensu Go Secrets provider:
 #
 #      - aws_secret_access_key
@@ -26,8 +26,9 @@
 #      - aws_region
 #
 #      Regardless of AWS credentials above, either configure the following
-#      secret using your secrets provider, or remove the secrets definitions
-#      and provide the topic ARN via the --topic-arn argument to the command:
+#      secret using your secrets provider, or remove it from the secrets
+#      definitions and provide the topic ARN via the --topic-arn argument
+#      to the command:
 #
 #      - sns_topic_arn
 #
