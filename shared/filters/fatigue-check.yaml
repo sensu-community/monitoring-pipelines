@@ -2,7 +2,7 @@
 # Description
 #   The Sensu Fatigue Check filter is an event filter that allows you to
 #   manage alert fatigue by having granular control over which events
-#   get forward to handlers.  This is done by tuning annotations on a
+#   get forwarded to handlers.  This is done by tuning annotations on a
 #   per-check and/or per-entity basis.
 #
 # Instructions
