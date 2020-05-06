@@ -79,6 +79,8 @@ $ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
     * `alert` (general alert mechanisms such as email, slack, etc.)
     * `deregistration` (handlers that deregister from cloud providers,
       configuration management, etc.)
+    * `entity-registration` (handlers that register entities with
+      configuration management, etc.)
     * `incident-management` (PagerDuty, etc.)
     * `metric-storage` (metrics handlers such as InfluxDB, etc.)
     * `remediation` (handlers that do auto-remediation)
