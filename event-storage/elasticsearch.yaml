@@ -1,0 +1,118 @@
+---
+# Description
+#   The Sensu Elasticsearch Handler is a Sensu Event Handler that sends events
+#   and metrics data to Elasticsearch
+#
+# Instructions
+#   1. Add "elasticsearch" to the "event-storage" handler set.
+#
+#      To create the "event-storage" handler set, please run:
+#
+#      $ sensuctl handler create event-storage --type set --handlers elasticsearch
+#
+#      If you already have a handler set called "event-storage", please run:
+#
+#      $ sensuctl edit handler event-storage
+#
+#      NOTE: the sensuctl edit command will open your default editor; please
+#      modify the "handlers" attribute by adding "elasticsearch".
+#
+#   2. Configure the following secrets using your preferred Sensu Go Secrets
+#      provider:
+#
+#      - elasticsearch_url
+#
+#      NOTE: example secret resources using the "env" provider are included in
+#      this template; to add your secrets to the Sensu Backend, please modify
+#      /etc/default/sensu-backend or /etc/sysconfig/sensu-backend and restart
+#      the sensu-backend service.
+#
+#   3. More configuration options are available for this plugin; please see the
+#      plugin documentation for more details.
+#
+# Documentation
+#   - https://github.com/jkerry/sensu-go-elasticsearch#sensu-go-elasticsearch-metric-handler-plugin
+#   - https://docs.sensu.io/sensu-go/latest/reference/secrets/
+#
+# Contributors
+#   The following individuals have contributed to this configuration template:
+#   - Todd Campbell, @nixwiz
+type: Handler
+api_version: core/v2
+metadata:
+  name: elasticsearch
+spec:
+  command: >-
+    sensu-go-elasticsearch
+    --index sensu
+    --dated_index
+  env_vars: null
+  filters:
+    - not_silenced
+  handlers: null
+  runtime_assets:
+    - jkerry/sensu-go-elasticsearch:0.2.3
+  secrets:
+    - name: ELASTICSEARCH_URL
+      secret: elasticsearch_url
+  timeout: 0
+  type: pipe
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: elasticsearch_url
+spec:
+  provider: env
+  id: ELASTICSEARCH_URL
+---
+type: Asset
+api_version: core/v2
+metadata:
+  name: sensu-go-elasticsearch:0.2.3
+  labels:
+  annotations:
+    io.sensu.bonsai.url: https://bonsai.sensu.io/assets/jkerry/sensu-go-elasticsearch
+    io.sensu.bonsai.api_url: https://bonsai.sensu.io/api/v1/assets/jkerry/sensu-go-elasticsearch
+    io.sensu.bonsai.tier: Community
+    io.sensu.bonsai.version: 0.2.3
+    io.sensu.bonsai.namespace: jkerry
+    io.sensu.bonsai.name: sensu-go-elasticsearch
+    io.sensu.bonsai.tags: ''
+spec:
+  builds:
+    - url: https://assets.bonsai.sensu.io/ae2fcabe0e4b6f0b9d7935cc55287eb6c9f35a4a/sensu-go-elasticsearch_0.2.3_windows_amd64.tar.gz
+      sha512: bd8dc4dd729a97bc4a8ea0543f277535f14d1d8b3ec5ab436edd620b1706e3f7561cdeaf7cce24657e15765e03e1af7c7d3ee3300fd81b34b7aa3131d4866e20
+      filters:
+        - entity.system.os == 'windows'
+        - entity.system.arch == 'amd64'
+    - url: https://assets.bonsai.sensu.io/ae2fcabe0e4b6f0b9d7935cc55287eb6c9f35a4a/sensu-go-elasticsearch_0.2.3_darwin_386.tar.gz
+      sha512: db40ec6e3022f5eacb7673486e322f8969a3f7299d355ce4a977f6d888d454b3725df00865dfcd79d397c6cc3d2b98bad92e0554b6eca8ed810b078849acd676
+      filters:
+        - entity.system.os == 'darwin'
+        - entity.system.arch == '386'
+    - url: https://assets.bonsai.sensu.io/ae2fcabe0e4b6f0b9d7935cc55287eb6c9f35a4a/sensu-go-elasticsearch_0.2.3_darwin_amd64.tar.gz
+      sha512: d1d418e30afafd38731478c0d20013025a812eb43ced6db081854f3837042f0c83a8c5567bfbd20983171ed617b102b9dc4a1daa7df890596b36d37a691c23de
+      filters:
+        - entity.system.os == 'darwin'
+        - entity.system.arch == 'amd64'
+    - url: https://assets.bonsai.sensu.io/ae2fcabe0e4b6f0b9d7935cc55287eb6c9f35a4a/sensu-go-elasticsearch_0.2.3_linux_armv7.tar.gz
+      sha512: d060876b34fffbf0bccd831542a5ab6a7e887680e88775dd7580c02684f73cbd21dc4fb201220fe3b4dff36412f1cffb62f1adf637bb81e8928f2b1483cfa2c1
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == 'armv7'
+    - url: https://assets.bonsai.sensu.io/ae2fcabe0e4b6f0b9d7935cc55287eb6c9f35a4a/sensu-go-elasticsearch_0.2.3_linux_arm64.tar.gz
+      sha512: d001b8407c3915c6d31def324d3a9a652ec733390d7d41a3ceaaa0f9de4f05079508504fbd5afd06c62dd0ef84dae12b916b20b40a5dc5729ce26d7ddc6e651c
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == 'arm64'
+    - url: https://assets.bonsai.sensu.io/ae2fcabe0e4b6f0b9d7935cc55287eb6c9f35a4a/sensu-go-elasticsearch_0.2.3_linux_386.tar.gz
+      sha512: 4f88aed0fbe779481d48011c5345981e6b03ecfe6020164d97dff9651b7fcbc9509d30ba828717080e576bbdb7b1c95cda84b575c13185e40f487e1ece92b5d3
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == '386'
+    - url: https://assets.bonsai.sensu.io/ae2fcabe0e4b6f0b9d7935cc55287eb6c9f35a4a/sensu-go-elasticsearch_0.2.3_linux_amd64.tar.gz
+      sha512: 22220ed943b260b99acf0b41a56eb57ad3ea3fae26b8ec12c0cbe69721e75d5fb58c02fff4a9adfa774a8479e7ade7a0a891b9371b7640f2c3e677bd8883a377
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == 'amd64'
