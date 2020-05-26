@@ -1,0 +1,73 @@
+---
+# Description
+#   The Sensu Check Status Metric Mutator is a handler mutator that
+#   surfaces a check's status (exit code) as a metric point before
+#   being sent to a handler.
+#
+# Instructions
+#   1. Add "sensu-check-status-metric-mutator" as the mutator of one or more
+#      of your individual handlers.
+#
+# Documentation
+#   - https://github.com/nixwiz/sensu-check-status-metric-mutator
+#
+# Contributors
+#   The following individuals have contributed to this configuration template:
+#   - Todd Campbell, @nixwiz
+type: Mutator
+api_version: core/v2
+metadata:
+  name: sensu-check-status-metric-mutator
+  namespace: default
+spec:
+  command: >-
+    sensu-check-status-metric-mutator
+    --metric-name-template "{{.Check.Name}}.status"
+  runtime_assets:
+    - nixwiz/sensu-check-status-metric-mutator:0.1.1
+---
+type: Asset
+api_version: core/v2
+metadata:
+  name: sensu-check-status-metric-mutator:0.1.1
+  labels:
+  annotations:
+    io.sensu.bonsai.url: https://bonsai.sensu.io/assets/nixwiz/sensu-check-status-metric-mutator
+    io.sensu.bonsai.api_url: https://bonsai.sensu.io/api/v1/assets/nixwiz/sensu-check-status-metric-mutator
+    io.sensu.bonsai.tier: Community
+    io.sensu.bonsai.version: 0.1.1
+    io.sensu.bonsai.namespace: nixwiz
+    io.sensu.bonsai.name: sensu-check-status-metric-mutator
+    io.sensu.bonsai.tags: mutator
+spec:
+  builds:
+    - url: https://assets.bonsai.sensu.io/4187138c78ae7cf34d21e90ecd8a7b1185d1532e/sensu-check-status-metric-mutator_0.1.1_windows_amd64.tar.gz
+      sha512: 4a5a8d980223caf7abb644fe7eac380e26e963476108de57376bfd364ed7d4aa9ea82c56bd0be4576c2899f98595f920599d24f0f0c8d6cc04f609fdd7eba7f2
+      filters:
+        - entity.system.os == 'windows'
+        - entity.system.arch == 'amd64'
+    - url: https://assets.bonsai.sensu.io/4187138c78ae7cf34d21e90ecd8a7b1185d1532e/sensu-check-status-metric-mutator_0.1.1_darwin_amd64.tar.gz
+      sha512: 44e2b04e509a77cafaff0c5e635dcc997ff6073387d787453fbf192b3c051f2900c11bf4593990f811b6b8b2c352f7a289f6a98ce2e8a7a442993de1987d8549
+      filters:
+        - entity.system.os == 'darwin'
+        - entity.system.arch == 'amd64'
+    - url: https://assets.bonsai.sensu.io/4187138c78ae7cf34d21e90ecd8a7b1185d1532e/sensu-check-status-metric-mutator_0.1.1_linux_armv7.tar.gz
+      sha512: 9b693da2daabf984de2f677eea14667066460c6aedd442bb3387b136b8a9cc77073bd469fc25ea76e2ba1be9fbe9efa3d38c735de11d1eb69f71344447fadd55
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == 'armv7'
+    - url: https://assets.bonsai.sensu.io/4187138c78ae7cf34d21e90ecd8a7b1185d1532e/sensu-check-status-metric-mutator_0.1.1_linux_arm64.tar.gz
+      sha512: 95a06e614f3b5ee64b596550ff319528435d2d78c9c56f984ac40d9545b60f256a29e1905755e3442b454b290bc641abf9d545409d846acd9f6d8b2e9b4a7ae6
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == 'arm64'
+    - url: https://assets.bonsai.sensu.io/4187138c78ae7cf34d21e90ecd8a7b1185d1532e/sensu-check-status-metric-mutator_0.1.1_linux_386.tar.gz
+      sha512: 3e25d1214f24582c58072684fd7fc70cd1ea957c48795923c68c5a9164418cc31cbe938caba85a03d00b8922a7d39552cd0da165faf42d9dca4c2e22e66a1294
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == '386'
+    - url: https://assets.bonsai.sensu.io/4187138c78ae7cf34d21e90ecd8a7b1185d1532e/sensu-check-status-metric-mutator_0.1.1_linux_amd64.tar.gz
+      sha512: 465458dc3baa0f93cc024a891c597118e531ca61a15c19aae2ece1838e7d84d6f8065bf12922a3482cc2bc02fc4ed7b48b9fce4acd771582d6d303b03b9e2e79
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == 'amd64'
