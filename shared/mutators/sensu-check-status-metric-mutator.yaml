@@ -18,7 +18,6 @@ type: Mutator
 api_version: core/v2
 metadata:
   name: sensu-check-status-metric-mutator
-  namespace: default
 spec:
   command: >-
     sensu-check-status-metric-mutator
