@@ -19,15 +19,15 @@ pipelines or the entire collection of pipelines using `sensuctl`.
 
 Add an individual pipeline via `sensuctl`:
 
-```
-$ sensuctl create -f https://raw.githubusercontent.com/sensu-community/monitoring-pipelines/master/metrics/influxdb.yml
+```bash
+sensuctl create -f https://raw.githubusercontent.com/sensu-community/monitoring-pipelines/master/metrics/influxdb.yml
 ```
 
 Add the entire collection of pipelines:
 
-```
-$ git clone git@github.com:sensu-community/monitoring-pipelines.git
-$ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
+```bash
+git clone git@github.com:sensu-community/monitoring-pipelines.git
+sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
 ```
 
 ## Guidelines
@@ -130,6 +130,10 @@ $ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
       * `env_vars`
       * `secrets`
       * `runtime_assets`
+
+15. All PRs submitted are ran through [super-linter](https://github.com/github/super-linter/).
+    You are encouraged to [run it locally](https://github.com/github/super-linter/blob/master/docs/run-linter-locally.md)
+    to reduce the churn of having to fix issues after submission.
 
 ## Contributing
 
