@@ -19,15 +19,15 @@ pipelines or the entire collection of pipelines using `sensuctl`.
 
 Add an individual pipeline via `sensuctl`:
 
-```
-$ sensuctl create -f https://raw.githubusercontent.com/sensu-community/monitoring-pipelines/master/metrics/influxdb.yml
+```bash
+sensuctl create -f https://raw.githubusercontent.com/sensu-community/monitoring-pipelines/master/metrics/influxdb.yml
 ```
 
 Add the entire collection of pipelines:
 
-```
-$ git clone git@github.com:sensu-community/monitoring-pipelines.git
-$ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
+```bash
+git clone git@github.com:sensu-community/monitoring-pipelines.git
+sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
 ```
 
 ## Guidelines
