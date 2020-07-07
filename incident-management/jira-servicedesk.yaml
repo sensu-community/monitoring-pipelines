@@ -30,9 +30,12 @@
 #      the sensu-backend service.
 #
 #   3. Set the appropriate Jira Project Key for your Service Desk Project with
-#      --jira-project-key
+#      --jira-project-key.
 #
-#   4. More configuration options are available for this plugin; please see the
+#   4. Adjust the Issue Description Template to suit your needs by changing
+#      --jira-issue-description.
+#
+#   5. More configuration options are available for this plugin; please see the
 #      plugin documentation for more details.
 #
 # Documentation
