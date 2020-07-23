@@ -1,0 +1,115 @@
+---
+# Description
+#   The Sensu SNMP Trap Handler is a Sensu Event Handler that alerts to
+#   an SNMP trap receiver.
+#
+# Instructions
+#   1. Add "snmp-trap" to the "alert" handler set.
+#
+#      To create the "alert" handler set, please run:
+#
+#      $ sensuctl handler create alert --type set --handlers snmp-trap
+#
+#      If you already have a handler set called "alert", please run:
+#
+#      $ sensuctl edit handler alert
+#
+#      NOTE: the sensuctl edit command will open your default editor; please
+#      modify the "handlers" attribute by adding "snmp-trap".
+#
+#   2. Configure the following secrets using your preferred Sensu Go Secrets
+#      provider:
+#
+#      - snmp_community
+#
+#      NOTE: example secret resources using the "env" provider are included in
+#      this template; to add your secrets to the Sensu Backend, please modify
+#      /etc/default/sensu-backend or /etc/sysconfig/sensu-backend and restart
+#      the sensu-backend service.
+#
+#   3. More configuration options are available for this plugin; please see the
+#      plugin documentation for more details.
+#
+# Documentation
+#   - https://github.com/nixwiz/sensu-snmp-trap-handler#sensu-snmp-trap-handler
+#   - https://docs.sensu.io/sensu-go/latest/reference/secrets/
+#
+# Contributors
+#   The following individuals have contributed to this configuration template:
+#   - Todd Campbell, @nixwiz
+type: Handler
+api_version: core/v2
+metadata:
+  name: snmp-trap
+spec:
+  command: >-
+    sensu-snmp-trap-handler
+    --host 127.0.0.1
+    --port 162
+    --version 2
+  env_vars: null
+  filters:
+    - is_incident
+    - not_silenced
+  handlers: null
+  runtime_assets:
+    - nixwiz/sensu-snmp-trap-handler:0.2.0
+  secrets:
+    - name: SNMP_COMMUNITY
+      secret: snmp_community
+  timeout: 0
+  type: pipe
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: snmp_community
+spec:
+  provider: env
+  id: SNMP_COMMUNITY
+---
+type: Asset
+api_version: core/v2
+metadata:
+  name: sensu-snmp-trap-handler:0.2.0
+  labels:
+  annotations:
+    io.sensu.bonsai.url: https://bonsai.sensu.io/assets/nixwiz/sensu-snmp-trap-handler
+    io.sensu.bonsai.api_url: https://bonsai.sensu.io/api/v1/assets/nixwiz/sensu-snmp-trap-handler
+    io.sensu.bonsai.tier: Community
+    io.sensu.bonsai.version: 0.2.0
+    io.sensu.bonsai.namespace: nixwiz
+    io.sensu.bonsai.name: sensu-snmp-trap-handler
+    io.sensu.bonsai.tags: handler, snmp
+spec:
+  builds:
+    - url: https://assets.bonsai.sensu.io/beafd182a711de27d727a993f62c7e87d805b1b6/sensu-snmp-trap-handler_0.2.0_linux_amd64.tar.gz
+      sha512: '0489597de853564ce975fc0cc6547e314bea1ff403147df3fa7313ba589b58ed9e713a122420cb664a9aa6b3974fda8d35a5a09f14341103b3024a855f9dfa49'
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == 'amd64'
+    - url: https://assets.bonsai.sensu.io/beafd182a711de27d727a993f62c7e87d805b1b6/sensu-snmp-trap-handler_0.2.0_windows_amd64.tar.gz
+      sha512: 756a75a130d50c61b4a51d1625bb3e40dcded145fc1f64b88f9be3035e3581973bfd467761c8aa4d62e14ed839620eadc0a43c1e49b936d7f995666d7684da5c
+      filters:
+        - entity.system.os == 'windows'
+        - entity.system.arch == 'amd64'
+    - url: https://assets.bonsai.sensu.io/beafd182a711de27d727a993f62c7e87d805b1b6/sensu-snmp-trap-handler_0.2.0_darwin_amd64.tar.gz
+      sha512: c4c63829c1cab27ba9d0168f3698dcf74f8cf753ac6fb7a791b392b123cd9645fc464f8df67f896370d637b56a4f2be6de841f6eafd186a2cf2ff7ef1c5cd42c
+      filters:
+        - entity.system.os == 'darwin'
+        - entity.system.arch == 'amd64'
+    - url: https://assets.bonsai.sensu.io/beafd182a711de27d727a993f62c7e87d805b1b6/sensu-snmp-trap-handler_0.2.0_linux_armv7.tar.gz
+      sha512: 85a6420a159ea866c8b7e1af860eff635cece7269ba9a3e3cdf3da637bb7d2bea7bec0a3a965a2c60d1fab00a75313e7d2cce488137cede702e21ca8cb20b047
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == 'armv7'
+    - url: https://assets.bonsai.sensu.io/beafd182a711de27d727a993f62c7e87d805b1b6/sensu-snmp-trap-handler_0.2.0_linux_arm64.tar.gz
+      sha512: d70def54add9a8b66909c8bb4930cc0375bd4247b43d0c31355e780c0a9159acaa44ba3c87ed6f423a731474d512b5b31afb2158a50b8c8d14eb4e1ab1ce175f
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == 'arm64'
+    - url: https://assets.bonsai.sensu.io/beafd182a711de27d727a993f62c7e87d805b1b6/sensu-snmp-trap-handler_0.2.0_linux_386.tar.gz
+      sha512: ef3567a480cdda90db128d46b96548195666fa16bad07db0c0656879bc8bb820eaea049548493e2ded32f073d737f968b941839472c1e536e09b81fc8058f70b
+      filters:
+        - entity.system.os == 'linux'
+        - entity.system.arch == '386'
