@@ -1,7 +1,9 @@
 ---
 # Description
 #   The Sensu SNMP Trap Handler is a Sensu Event Handler that alerts to
-#   an SNMP trap receiver.
+#   an SNMP trap receiver.  As of this writing the handler supports
+#   SNMP versions 1, 2, and 2c.  Please check the handler documentation
+#   to see if other versions are now supported.
 #
 # Instructions
 #   1. Add "snmp-trap" to the "alert" handler set.
