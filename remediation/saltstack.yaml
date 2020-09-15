@@ -51,7 +51,7 @@ spec:
     - not_silenced
   handlers: null
   runtime_assets:
-    - sensu/sensu-saltstack-handler:0.3.0
+    - sensu/sensu-saltstack-handler:0.3.1
   secrets:
     - name: SALTSTACK_USERNAME
       secret: saltstack_username
@@ -79,7 +79,7 @@ spec:
 type: Asset
 api_version: core/v2
 metadata:
-  name: sensu/sensu-saltstack-handler:0.3.0
+  name: sensu/sensu-saltstack-handler:0.3.1
   labels:
   annotations:
     io.sensu.bonsai.url: https://bonsai.sensu.io/assets/sensu/sensu-saltstack-handler
@@ -92,33 +92,33 @@ metadata:
     io.sensu.bonsai.message: This asset is for users with a valid Enterprise license
 spec:
   builds:
-    - url: https://assets.bonsai.sensu.io/lopx2JDd6KXBax775k6Qjw%3D%3D/sensu-saltstack-handler_0.3.0_windows_amd64.tar.gz
-      sha512: 46c2a13de468d5929866114e17fc9481e92e821b2ab942507358be8a002f7f6fb802b229972c37a79d5a68a81b6bc077e1aa4d9f4719c83caa765db49f3d6a3f
+    - url: https://assets.bonsai.sensu.io//sensu-saltstack-handler_0.3.1_windows_amd64.tar.gz
+      sha512: bd2680f87420459b3dfa7bd794a17db23ba67d2134748d8153ea3f155272d8f40750e004d74380afc989f0cb8b84f0f23b4d925286b9c105a22e0ef92f0e95c9
       filters:
         - entity.system.os == 'windows'
         - entity.system.arch == 'amd64'
-    - url: https://assets.bonsai.sensu.io/lopx2JDd6KXBax775k6Qjw%3D%3D/sensu-saltstack-handler_0.3.0_darwin_amd64.tar.gz
-      sha512: 1ef9d3912fc659d172d1522747d0f3199fefed8ea0ed95a68f776379d40aea4f2fb6a0f147c45e30cd220878b0cf5179a523e9d1592e60259afcb1cb19325708
+    - url: https://assets.bonsai.sensu.io//sensu-saltstack-handler_0.3.1_darwin_amd64.tar.gz
+      sha512: ae49bf3b0dd4523a8ee0320180b180c4f68c0d0da3a51cba2292f5640f4dd0498fa466d97fb39e2089ab94ce4c9ed385aae802d64e2c151385f250a5aa138eaf
       filters:
         - entity.system.os == 'darwin'
         - entity.system.arch == 'amd64'
-    - url: https://assets.bonsai.sensu.io/lopx2JDd6KXBax775k6Qjw%3D%3D/sensu-saltstack-handler_0.3.0_linux_armv7.tar.gz
-      sha512: b6b98da4a35d6f407677ee4e9ae2e2e6e1445576e903c7bfa5843ad4949332a5a572f61d8d80f9137d19715baba911f9544679739bc11093cffac545c2ebb3bb
+    - url: https://assets.bonsai.sensu.io//sensu-saltstack-handler_0.3.1_linux_armv7.tar.gz
+      sha512: 5a0c0b6d707c53e3b4b97b3d95a6f8e09dc78aae90406a51170bf6a59d5582ccc6687c6dd2c02e1423889286594c48de2c83cda7a6a48518cd6f31bfeee053d7
       filters:
         - entity.system.os == 'linux'
         - entity.system.arch == 'armv7'
-    - url: https://assets.bonsai.sensu.io/lopx2JDd6KXBax775k6Qjw%3D%3D/sensu-saltstack-handler_0.3.0_linux_arm64.tar.gz
-      sha512: de1e67fef51c0e4a2fee5584163b88447841e3df7ce9146cb579cb1f3dd52995e4cf815d5b0feaa7b3a33ec451e19fc24f3c1f6f44ad77cc13e1a27742afa1ed
+    - url: https://assets.bonsai.sensu.io//sensu-saltstack-handler_0.3.1_linux_arm64.tar.gz
+      sha512: 12e3d1ebde3ef1145ac23a222226400ef8264ceb1df84b773009fa370f128c5e9a141b70deacb32b83ec8180f065c6df721411667d10fee02f91b62d4ad4b9b3
       filters:
         - entity.system.os == 'linux'
         - entity.system.arch == 'arm64'
-    - url: https://assets.bonsai.sensu.io/lopx2JDd6KXBax775k6Qjw%3D%3D/sensu-saltstack-handler_0.3.0_linux_386.tar.gz
-      sha512: 2f65564e6fd755618f8b1ce953cabb257936a47b16736634e861390c154c376f27ac55454d18172e8eea32d33615d15365db38e73fd9495953ecb20024c8232e
+    - url: https://assets.bonsai.sensu.io//sensu-saltstack-handler_0.3.1_linux_386.tar.gz
+      sha512: 16dbc21647766386338a8c927b3c834ae68d005951f3537a5c1ab05690e1f64126b439e8c7afaf2740368cad7aa5765939f19110d9a1c66618c409fbbbcb048d
       filters:
         - entity.system.os == 'linux'
         - entity.system.arch == '386'
-    - url: https://assets.bonsai.sensu.io/lopx2JDd6KXBax775k6Qjw%3D%3D/sensu-saltstack-handler_0.3.0_linux_amd64.tar.gz
-      sha512: da536cdbbd2621da1b5417e14f6272799ae5a2eeb502e76c0f30fdb9bc52604d871f2ef79d50c6d14d1cde7d80ae6de618dbeaa8556e0cfe7410ca811ee976fc
+    - url: https://assets.bonsai.sensu.io//sensu-saltstack-handler_0.3.1_linux_amd64.tar.gz
+      sha512: e83c08182d0fcbf6e049f877b5d9114781ab322f5fafaf374f210316bc890ea3b411c6ef0b21d5b17734283731e5f7f85601c6d80efb1989ffb2caf9eb3627d9
       filters:
         - entity.system.os == 'linux'
         - entity.system.arch == 'amd64'
