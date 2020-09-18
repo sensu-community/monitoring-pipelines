@@ -1,0 +1,71 @@
+---
+# Description
+# Remediate issues using SaltStack Enterprise RaaS API
+#
+# Instructions
+#   1. Add "rundeck" to the "remediation" handler set.
+#
+#      To create the "remediation" handler set, please run:
+#
+#      $ sensuctl handler create remediation --type set --handlers rundeck
+#
+#      If you already have a handler set called "remediation", please run:
+#
+#      $ sensuctl edit handler remediation
+#
+#      NOTE: the sensuctl edit command will open your default editor; please
+#      modify the "handlers" attribute by adding "rundeck".
+#
+#   2. Configure the following secrets using your preferred Sensu Go Secrets
+#      provider:
+#
+#      - rundeck_auth_token
+#
+#      NOTE: example secret resources using the "env" provider are included in
+#      this template; to add your secrets to the Sensu Backend, please modify
+#      /etc/default/sensu-backend or /etc/sysconfig/sensu-backend and restart
+#      the sensu-backend service.
+#
+#   3. Configure remediation actions via annotations in your checks per the
+#      plugin documentation.
+#
+#   4. More configuration options are available for this plugin; please see the
+#      plugin documentation for more details.
+#
+# Documentation
+#   - https://github.com/sensu/sensu-rundeck-handler#sensu-rundeck-handler
+#   - https://docs.sensu.io/sensu-go/latest/reference/secrets/
+#
+# Contributors
+#   The following individuals have contributed to this configuration template:
+#   - Todd Campbell, @nixwiz
+type: Handler
+api_version: core/v2
+metadata:
+  name: rundeck
+spec:
+  command: >-
+    sensu-rundeck-handler
+    --api-url http://localhost:4440/
+    --node-template "{{.Entity.Name}}"
+  env_vars: null
+  filters:
+    - not_silenced
+    - is_incident
+  handlers: null
+  runtime_assets:
+    - sensu/sensu-rundeck-handler:0.1.0
+  secrets:
+    - name: RUNDECK_AUTH_TOKEN
+      secret: rundeck_auth_token
+  timeout: 0
+  type: pipe
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: rundeck_auth_token
+spec:
+  provider: env
+  id: RUNDECK_AUTH_TOKEN
+---
