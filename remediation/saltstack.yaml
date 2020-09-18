@@ -27,7 +27,10 @@
 #      /etc/default/sensu-backend or /etc/sysconfig/sensu-backend and restart
 #      the sensu-backend service.
 #
-#   3. More configuration options are available for this plugin; please see the
+#   3. Configure remediation actions via annotations in your checks per the
+#      plugin documentation.
+#
+#   4. More configuration options are available for this plugin; please see the
 #      plugin documentation for more details.
 #
 # Documentation
