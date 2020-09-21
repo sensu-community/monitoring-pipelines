@@ -3,23 +3,23 @@
 # Remediate issues using SaltStack Enterprise RaaS API
 #
 # Instructions
-#   1. Add "rundeck" to the "remediation" handler set.
+#   1. Add "rundeck-webhook" to the "remediation" handler set.
 #
 #      To create the "remediation" handler set, please run:
 #
-#      $ sensuctl handler create remediation --type set --handlers rundeck
+#      $ sensuctl handler create remediation --type set --handlers rundeck-webhook
 #
 #      If you already have a handler set called "remediation", please run:
 #
 #      $ sensuctl edit handler remediation
 #
 #      NOTE: the sensuctl edit command will open your default editor; please
-#      modify the "handlers" attribute by adding "rundeck".
+#      modify the "handlers" attribute by adding "rundeck-webhook".
 #
 #   2. Configure the following secrets using your preferred Sensu Go Secrets
 #      provider:
 #
-#      - rundeck_auth_token
+#      - rundeck_webhook
 #
 #      NOTE: example secret resources using the "env" provider are included in
 #      this template; to add your secrets to the Sensu Backend, please modify
@@ -42,12 +42,11 @@
 type: Handler
 api_version: core/v2
 metadata:
-  name: rundeck
+  name: rundeck-webhook
 spec:
   command: >-
     sensu-rundeck-handler
     --api-url http://localhost:4440/
-    --node-template "{{.Entity.Name}}"
   env_vars: null
   filters:
     - not_silenced
@@ -56,18 +55,18 @@ spec:
   runtime_assets:
     - sensu/sensu-rundeck-handler:0.1.0
   secrets:
-    - name: RUNDECK_AUTH_TOKEN
-      secret: rundeck_auth_token
+    - name: RUNDECK_WEBHOOK
+      secret: rundeck_webhook
   timeout: 0
   type: pipe
 ---
 type: Secret
 api_version: secrets/v1
 metadata:
-  name: rundeck_auth_token
+  name: rundeck_webhook
 spec:
   provider: env
-  id: RUNDECK_AUTH_TOKEN
+  id: RUNDECK_WEBHOOK
 ---
 type: Asset
 api_version: core/v2
