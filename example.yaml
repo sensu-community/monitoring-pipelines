@@ -1,0 +1,65 @@
+# Description
+#   Example pipeline template. This template can be used as a reference for
+#   new contributions.
+#
+# Instructions
+#   1. Add "helloworld" to the "alert" handler set.
+#
+#      To create the "alert" handler set, please run:
+#
+#      $ sensuctl handler create alert --type set --handlers helloworld
+#
+#      If you already have a handler set called "alert", please run:
+#
+#      $ sensuctl edit handler alert
+#
+#      NOTE: the sensuctl edit command will open your default editor; please
+#      modify the "handlers" attribute by adding "helloworld".
+#
+#   2. Configure the following secrets using your preferred Sensu Go Secrets
+#      provider:
+#
+#      - helloworld (e.g. "Hello secret world!")
+#
+#      NOTE: example secret resources using the "env" provider are included in
+#      this template; to add your secrets to the Sensu Backend, please modify
+#      /etc/default/sensu-backend or /etc/sysconfig/sensu-backend and restart
+#      the sensu-backend service.
+#
+#   3. More configuration options are available for this plugin; please see the
+#      plugin documentation for more details.
+#
+# Documentation
+#   - <link to plugin documentation>
+#   - https://docs.sensu.io/sensu-go/latest/reference/secrets/
+#
+# Contributors
+#   The following individuals have contributed to this configuration template:
+#   - @portertech
+#   - @calebhailey
+#   - @jspaleta
+#   - @nixwiz
+---
+type: Handler
+api_version: core/v2
+metadata:
+  name: helloworld
+  spec:
+    type: pipe
+    command: sensu-influxdb-handler
+    timeout: 10
+    filters:
+    - has_metrics
+    runtime_assets:
+    - sensu/sensu-helloworld-handler:0.1.0
+    secrets:
+    - name: HELLOWORLD
+      secret: helloworld
+---
+type: Secret
+api_version: secrets/v1
+metadata:
+  name: helloworld
+spec:
+  provider: env
+  id: HELLOWORLD
