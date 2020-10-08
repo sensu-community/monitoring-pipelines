@@ -31,7 +31,7 @@
 #      plugin documentation for more details.
 #
 # Documentation
-#   - https://github.com/sensu/sensu-influxdb-handler#sensu-influxdb-handler
+#   - https://github.com/sensu/sensu-timescaledb-handler#readme
 #   - https://docs.sensu.io/sensu-go/latest/reference/secrets/
 #
 # Contributors
@@ -51,7 +51,7 @@ spec:
   filters:
   - has_metrics
   runtime_assets:
-  - sensu/sensu-timescaledb-handler:0.3.0
+  - sensu/sensu-timescaledb-handler:0.5.0
   secrets:
   - name: TIMESCALEDB_DSN
     secret: timescaledb_dsn
@@ -74,21 +74,25 @@ metadata:
     io.sensu.bonsai.tags: ""
     io.sensu.bonsai.tier: Community
     io.sensu.bonsai.url: https://bonsai.sensu.io/assets/sensu/sensu-timescaledb-handler
-    io.sensu.bonsai.version: 0.3.0
-  name: sensu/sensu-timescaledb-handler:0.3.0
+    io.sensu.bonsai.version: 0.5.0
+  created_by: admin
+  labels:
+    sensu.io/managed_by: sensuctl
+  name: sensu/sensu-timescaledb-handler:0.5.0
+  namespace: ansible-demo
 spec:
   builds:
   - filters:
     - entity.system.os == 'linux'
     - entity.system.arch == 'arm64'
     headers: null
-    sha512: 88b05987803d81e19ddf9be413c14fd2a9e9eb565e53290bcc86c14ebf079273eaaa56a6f59566b7df5947145ee6606af49df676560e6871ec284c6e63eea782
-    url: https://assets.bonsai.sensu.io/216dc594dc3794508be8ba3b14d4666b0399143e/sensu-timescaledb-handler_0.3.0_linux_arm64.tar.gz
+    sha512: d7bc0171feceaf4ca867a11c7ba7f7c835e0c5c152e78d20ab1aede2ef48deaa5343ee59ce463badd420f738cb63b3a453629f3cd80a19b5b03f7b8b497c6ae4
+    url: https://assets.bonsai.sensu.io/d9f1a59dae64fd188e0715123071ced35702f8fd/sensu-timescaledb-handler_0.5.0_linux_arm64.tar.gz
   - filters:
     - entity.system.os == 'linux'
     - entity.system.arch == 'amd64'
     headers: null
-    sha512: 0a651d3e4017459d684ca78dd6a42f49294de86f5964017f93dc17e30dd9f4ffcffde50d5dfb75a41b63383cf84ed218e352ca43c180d6966d45c5f7b181db8f
-    url: https://assets.bonsai.sensu.io/216dc594dc3794508be8ba3b14d4666b0399143e/sensu-timescaledb-handler_0.3.0_linux_amd64.tar.gz
+    sha512: 96d1788e22c8125b14e90b2a78dda91a721246aa2d66381d18a9ee5ca5279215d1d52d3024f03cb07b2d3a1302936c99d032e6ef196ce60f5c4b3973f5ad965a
+    url: https://assets.bonsai.sensu.io/d9f1a59dae64fd188e0715123071ced35702f8fd/sensu-timescaledb-handler_0.5.0_linux_amd64.tar.gz
   filters: null
   headers: null
