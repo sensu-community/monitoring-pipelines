@@ -88,7 +88,7 @@ metadata:
     io.sensu.bonsai.url: https://bonsai.sensu.io/assets/sensu/sensu-saltstack-handler
     io.sensu.bonsai.api_url: https://bonsai.sensu.io/api/v1/assets/sensu/sensu-saltstack-handler
     io.sensu.bonsai.tier: Enterprise
-    io.sensu.bonsai.version: 0.3.0
+    io.sensu.bonsai.version: 0.4.0
     io.sensu.bonsai.namespace: sensu
     io.sensu.bonsai.name: sensu-saltstack-handler
     io.sensu.bonsai.tags: remediation, salt, saltstack
