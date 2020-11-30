@@ -6,9 +6,6 @@ intended to be a starting point for Sensu Go users, some minor per-deployment
 modifications are to be expected (e.g. configuration of a [secrets
 provider][1]).
 
-[0]: https://sensu.io
-[1]: https://docs.sensu.io/sensu-go/latest/guides/secrets-management/
-
 ## Goal
 
 The purpose of this project is to provide portable configuration for a more
@@ -75,7 +72,7 @@ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
     * Secrets (if any)
     * Assets
 
-12. Handler resources are defined under the [Handler Set][1] directories:
+12. Handler resources are defined under the [Handler Set][2] directories:
     * `alert` (general alert mechanisms such as email, slack, etc.)
     * `deregistration` (handlers that deregister from cloud providers,
       configuration management, etc.)
@@ -86,7 +83,7 @@ sensuctl create -f $(find ./monitoring-pipelines -name *.yml)
     * `remediation` (handlers that do auto-remediation)
 
     **NOTE:** These are organized to line up with the handlers to be defined
-    in the [monitoring-checks][2] repository.
+    in the [monitoring-checks][3] repository.
 
 13. Mutator and Filter resources are defined in the `shared` directory structure.
 
@@ -141,5 +138,7 @@ For guidelines on how to contribute to this project and information
 about what we require from project contributors, please see
 [CONTRIBUTING.md](CONTRIBUTING.md).
 
-[1]: https://docs.sensu.io/sensu-go/latest/reference/handlers/#handler-sets
-[2]: https://github.com/sensu-community/monitoring-checks#handler-list
+[0]: https://sensu.io
+[1]: https://docs.sensu.io/sensu-go/latest/guides/secrets-management/
+[2]: https://docs.sensu.io/sensu-go/latest/reference/handlers/#handler-sets
+[3]: https://github.com/sensu-community/monitoring-checks#handler-list
