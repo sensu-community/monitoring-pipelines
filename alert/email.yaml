@@ -31,26 +31,6 @@
 #      /etc/default/sensu-backend or /etc/sysconfig/sensu-backend and restart
 #      the sensu-backend service.
 #
-#   2. If using the AWS environment variables for credentails (and not using
-#      them from the ~/.aws/credentials file or an EC2 IAM role), configure the
-#      following secrets using your preferred Sensu Go Secrets provider:
-#
-#      - aws_secret_access_key
-#      - aws_access_key_id
-#      - aws_region
-#
-#      Regardless of AWS credentials above, either configure the following
-#      secret using your secrets provider, or remove it from the secrets
-#      definitions and provide the topic ARN via the --topic-arn argument
-#      to the command:
-#
-#      - sns_topic_arn
-#
-#      NOTE: example secret resources using the "env" provider are included in
-#      this template; to add your secrets to the Sensu Backend, please modify
-#      /etc/default/sensu-backend or /etc/sysconfig/sensu-backend and restart
-#      the sensu-backend service.
-#
 #   3. Update the to and from email addresses used in this template. 
 #
 #      NOTE: Sensu checks can be annotated to use preferred to/from email addresses 
