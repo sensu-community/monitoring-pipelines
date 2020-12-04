@@ -5,15 +5,15 @@
 #   state.
 #
 # Instructions
-#   1. Add "aws-ec2" to the "alert" handler set.
+#   1. Add "aws-ec2" to the "deregistration" handler set.
 #
-#      To create the "alert" handler set, please run:
+#      To create the "deregistration" handler set, please run:
 #
-#      $ sensuctl handler create alert --type set --handlers aws-ec2
+#      $ sensuctl handler create deregistration --type set --handlers aws-ec2
 #
-#      If you already have a handler set called "alert", please run:
+#      If you already have a handler set called "deregistration", please run:
 #
-#      $ sensuctl edit handler alert
+#      $ sensuctl edit handler deregistration
 #
 #      NOTE: the sensuctl edit command will open your default editor; please
 #      modify the "handlers" attribute by adding "aws-ec2".
@@ -54,10 +54,10 @@ spec:
   command: >-
     sensu-ec2-handler
     --sensu-api-url http://localhost:8080
+    --aws-allowed-instance-states running
   env_vars: null
   filters:
     - is_incident
-    - not_silenced
   handlers: null
   runtime_assets:
     - sensu/sensu-ec2-handler:0.4.0
